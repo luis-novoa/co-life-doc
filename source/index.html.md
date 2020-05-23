@@ -65,6 +65,57 @@ Kittn expects for the API key to be included in all API requests to the server i
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 
+# Users
+
+## Sign Up
+
+```shell
+curl http://127.0.0.1:3000/api/v1/users
+  -X POST
+  -H "Content-Type: application/json"
+  -d '{
+    "user":{
+      "name": "Example",
+      "email": "example@testdomain.com", 
+      "password": "example", 
+      "password_confirmation": "example"
+    }
+  }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Example",
+    "admin": false,
+    "email": "example@testdomain.com",
+    "created_at": "<current time>",
+    "updated_at": "<current time>",
+    "authentication_token": "<random token>"
+  }
+]
+```
+
+Use this endpoint to create an account.
+
+<aside class="warning">Don't forget to store your authentication token after this operation!</aside>
+
+### HTTP Request
+
+`POST http://127.0.0.1:3000/api/v1/users`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+name | The account's user name
+email | The account's email
+password | The account's password
+password_confirmation | Password confirmation
+
 # Kittens
 
 ## Get All Kittens
