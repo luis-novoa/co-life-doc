@@ -144,7 +144,7 @@ curl http://127.0.0.1:3000/users/1
 
 Use this endpoint to retrieve information about one account.
 
-<aside class="success">Common users can check their own data, while admins can also check data of other users!</aside>
+<aside class="success">Common users can check their own data, while admins can also check data of other users, except for their authentication tokens.</aside>
 
 ### HTTP Request
 
