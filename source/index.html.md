@@ -70,7 +70,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 ## Sign Up
 
 ```shell
-curl http://127.0.0.1:3000/api/v1/users
+curl http://127.0.0.1:3000/users
   -X POST
   -H "Content-Type: application/json"
   -d '{
@@ -105,7 +105,7 @@ Use this endpoint to create an account.
 
 ### HTTP Request
 
-`POST http://127.0.0.1:3000/api/v1/users`
+`POST http://127.0.0.1:3000/users`
 
 ### Query Parameters
 
@@ -115,6 +115,46 @@ name | The account's user name
 email | The account's email
 password | The account's password
 password_confirmation | Password confirmation
+
+## Show
+
+```shell
+curl http://127.0.0.1:3000/users/1
+  -X GET
+  -H "Content-Type: application/json"
+  -H "X-User-Email: example@testdomain.com"
+  -H "X-User-Token: <authentication_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Example",
+    "admin": false,
+    "email": "example@testdomain.com",
+    "created_at": "<creation time>",
+    "updated_at": "<update time>",
+    "authentication_token": "<authentication_token>"
+  }
+]
+```
+
+Use this endpoint to retrieve information about one account.
+
+<aside class="success">Common users can check their own data, while admins can also check data of other users!</aside>
+
+### HTTP Request
+
+`GET http://127.0.0.1:3000/users/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The id of the user you want to check
 
 # Kittens
 
