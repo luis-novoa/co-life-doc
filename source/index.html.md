@@ -116,6 +116,60 @@ email | The account's email
 password | The account's password
 password_confirmation | Password confirmation
 
+## Update
+
+```shell
+curl http://127.0.0.1:3000/users/1
+  -X PUT
+  -H "Content-Type: application/json"
+  -H "X-User-Email: example@testdomain.com"
+  -H "X-User-Token: <authentication_token>"
+  -d '{
+    "user":{
+      "name": "A Brand New Name"
+    }
+  }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "A Brand New Name",
+    "admin": false,
+    "email": "example@testdomain.com",
+    "created_at": "<creation time>",
+    "updated_at": "<current time>",
+    "authentication_token": "<random token>"
+  }
+]
+```
+
+Updates an account's information.
+
+<aside class="warning">Only the owner of the account can change its information.</aside>
+
+### HTTP Request
+
+`POST http://127.0.0.1:3000/users/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The id of the account you want to change
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+name | The account's new user name
+email | The account's new email
+
+<aside class="success">Inform only the parameters you want to change!</aside>
+
 ## Show
 
 ```shell
