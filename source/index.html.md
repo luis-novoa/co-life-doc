@@ -200,7 +200,7 @@ Retrieves information from all accounts, except for their authentication tokens.
 
 `GET http://127.0.0.1:3000/users`
 
-## Show
+## Destroy
 
 ```shell
 curl http://127.0.0.1:3000/users/1
