@@ -144,7 +144,7 @@ curl http://127.0.0.1:3000/users/1
 
 Retrieves information from one account.
 
-<aside class="success">Common users can check their own data, while admins can also check data of other users, except for their authentication tokens.</aside>
+<aside class="notice">Common users can check their own data, while admins can also check data of other users, except for their authentication tokens.</aside>
 
 ### HTTP Request
 
@@ -194,11 +194,45 @@ curl http://127.0.0.1:3000/users
 
 Retrieves information from all accounts, except for their authentication tokens.
 
-<aside class="warning">This action is available only for admins.</aside>
+<aside class="notice">This action is available only for admins.</aside>
 
 ### HTTP Request
 
 `GET http://127.0.0.1:3000/users`
+
+## Show
+
+```shell
+curl http://127.0.0.1:3000/users/1
+  -X DELETE
+  -H "Content-Type: application/json"
+  -H "X-User-Email: example@testdomain.com"
+  -H "X-User-Token: <authentication_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "User deleted!"
+  }
+]
+```
+
+Deletes one account.
+
+<aside class="notice">Common users can only delete their own accounts. Admins can delete any common accounts.</aside>
+
+### HTTP Request
+
+`DELETE http://127.0.0.1:3000/users/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The id of the user you want to delete
 
 # Kittens
 
