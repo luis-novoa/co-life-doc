@@ -99,7 +99,7 @@ curl http://127.0.0.1:3000/users
 ]
 ```
 
-Use this endpoint to create an account.
+Creates an account.
 
 <aside class="warning">Don't forget to store your authentication token after this operation!</aside>
 
@@ -142,7 +142,7 @@ curl http://127.0.0.1:3000/users/1
 ]
 ```
 
-Use this endpoint to retrieve information about one account.
+Retrieves information from one account.
 
 <aside class="success">Common users can check their own data, while admins can also check data of other users, except for their authentication tokens.</aside>
 
@@ -155,6 +155,50 @@ Use this endpoint to retrieve information about one account.
 Parameter | Description
 --------- | -----------
 ID | The id of the user you want to check
+
+## Index
+
+```shell
+curl http://127.0.0.1:3000/users
+  -X GET
+  -H "Content-Type: application/json"
+  -H "X-User-Email: example@testdomain.com"
+  -H "X-User-Token: <authentication_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Example",
+    "admin": false,
+    "email": "example@testdomain.com",
+    "created_at": "<creation time>",
+    "updated_at": "<update time>",
+    "authentication_token": "<authentication_token>"
+  },
+  ...,
+  {
+    "id": 30,
+    "name": "Example30",
+    "admin": false,
+    "email": "example30@testdomain.com",
+    "created_at": "<creation time>",
+    "updated_at": "<update time>",
+    "authentication_token": "<authentication_token>"
+  }
+]
+```
+
+Retrieves information from all accounts, except for their authentication tokens.
+
+<aside class="warning">This action is available only for admins.</aside>
+
+### HTTP Request
+
+`GET http://127.0.0.1:3000/users`
 
 # Kittens
 
