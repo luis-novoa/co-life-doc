@@ -333,22 +333,46 @@ curl http://127.0.0.1:3000/api/v1/homes
 
 Creates a home ad.
 
+## Show
+
+```shell
+curl http://127.0.0.1:3000/api/v1/homes/1 
+  -X GET 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 1,
+    "title": "Test Title",
+    "address": "Test St. 404",
+    "city": "Utopolis",
+    "country": "Narnia",
+    "rent": "195.21",
+    "room_type": "shared",
+    "more_info": "Cosy place full of nice ppl! Join us!",
+    "user_id": 1,
+    "created_at": "<creation time>",
+    "updated_at": "<update time>",
+  }
+]
+```
+
+Shows information about a home ad.
+
+<aside class="success">This action doesn't require an authentication token!</aside>
+
 ### HTTP Request
 
-`POST http://127.0.0.1:3000/api/v1/homes`
+`GET http://127.0.0.1:3000/api/v1/homes/:id`
 
 ### Query Parameters
 
 Parameter | Description
 --------- | -----------
-title | The title of your ad
-address | The address of the home advertised
-city | The city of the home advertised
-country | The country of the home advertised
-rent | How much is the monthly rent of the home advertised 
-room_type | Tells if the room advertised is "shared" or "individual" (for one person) 
-more_info | Additional information about the room and home
-
+ID | The id of the ad you want to check
 
 # Kittens
 
