@@ -374,6 +374,55 @@ Parameter | Description
 --------- | -----------
 ID | The id of the ad you want to check
 
+## Index
+
+```shell
+curl http://127.0.0.1:3000/api/v1/homes 
+  -X GET 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 1,
+    "title": "Test Title",
+    "address": "Test St. 404",
+    "city": "Utopolis",
+    "country": "Narnia",
+    "rent": "195.21",
+    "room_type": "shared",
+    "more_info": "Cosy place full of nice ppl! Join us!",
+    "user_id": 1,
+    "created_at": "<creation time>",
+    "updated_at": "<update time>",
+  },
+  ... ,
+  {
+    "id": 37,
+    "title": "Another Test Title",
+    "address": "Test Av. 200",
+    "city": "Distopolis",
+    "country": "Mordor",
+    "rent": "8195.21",
+    "room_type": "individual",
+    "more_info": "It's basically hunger games glorified.",
+    "user_id": 6,
+    "created_at": "<creation time>",
+    "updated_at": "<update time>",
+  }
+]
+```
+
+Shows a list of all home ads.
+
+<aside class="success">This action doesn't require an authentication token!</aside>
+
+### HTTP Request
+
+`GET http://127.0.0.1:3000/api/v1/homes`
+
 # Kittens
 
 ## Get All Kittens
