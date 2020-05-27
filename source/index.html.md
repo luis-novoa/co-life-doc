@@ -333,6 +333,18 @@ curl http://127.0.0.1:3000/api/v1/homes
 
 Creates a home ad.
 
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+title | The title of your ad
+address | The address of the home advertised
+city | The city of the home advertised
+country | The country of the home advertised
+rent | How much is the monthly rent of the home advertised 
+room_type | Tells if the room advertised is "shared" or "individual" (for one person) 
+more_info | Additional information about the room and home
+
 ## Show
 
 ```shell
@@ -418,6 +430,65 @@ curl http://127.0.0.1:3000/api/v1/homes
 Shows a list of all home ads.
 
 <aside class="success">This action doesn't require an authentication token!</aside>
+
+## Update
+
+```shell
+curl http://127.0.0.1:3000/api/v1/homes/1
+  -X PUT 
+  -H "Content-Type: application/json" 
+  -H "X-User-Email: example@testdomain.com" 
+  -H "X-User-Token: <authentication_token>" 
+  -d '{
+    "home":{
+      "title": "Brand New Title"
+    }
+  }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 1,
+    "title": "Brand New Title",
+    "address": "Test St. 404",
+    "city": "Utopolis",
+    "country": "Narnia",
+    "rent": "195.21",
+    "room_type": "shared",
+    "more_info": "Cosy place full of nice ppl! Join us!",
+    "user_id": 1,
+    "created_at": "<creation time>",
+    "updated_at": "<current time>",
+  }
+]
+```
+
+Updates a home ad's information.
+
+<aside class="notice">Users can only update their own ads. Admins can update any ad.</aside>
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The id of the ad you want to update
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+title | The updated title of the home advertised
+address | The updated address of the home advertised
+city | The updated city of the home advertised
+country | The updated country of the home advertised
+rent | The updated rent of the home advertised 
+room_type | The updated type of the room offered 
+more_info | Updated additional information about the room and home
+
+<aside class="success">Inform only the parameters you want to change!</aside>
 
 ### HTTP Request
 
