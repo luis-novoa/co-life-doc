@@ -288,6 +288,68 @@ Parameter | Description
 --------- | -----------
 ID | The id of the user you want to delete
 
+# Homes
+
+## Create
+
+```shell
+curl http://127.0.0.1:3000/api/v1/homes 
+  -X POST 
+  -H "Content-Type: application/json" 
+  -H "X-User-Email: example@testdomain.com" 
+  -H "X-User-Token: <authentication_token>" 
+  -d '{
+    "home":{
+      "title": "Test Title", 
+      "address": "Test St. 404", 
+      "city": "Utopolis", 
+      "country": "Narnia", 
+      "rent": "195.21", 
+      "room_type": "shared", 
+      "more_info": "Cosy place full of nice ppl! Join us!"
+    }
+  }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 1,
+    "title": "Test Title",
+    "address": "Test St. 404",
+    "city": "Utopolis",
+    "country": "Narnia",
+    "rent": "195.21",
+    "room_type": "shared",
+    "more_info": "Cosy place full of nice ppl! Join us!",
+    "user_id": 1,
+    "created_at": "<current time>",
+    "updated_at": "<current time>",
+  }
+]
+```
+
+Creates a home ad.
+
+### HTTP Request
+
+`POST http://127.0.0.1:3000/api/v1/homes`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+title | The title of your ad
+address | The address of the home advertised
+city | The city of the home advertised
+country | The country of the home advertised
+rent | How much is the monthly rent of the home advertised 
+room_type | Tells if the room advertised is "shared" or "individual" (for one person) 
+more_info | Additional information about the room and home
+
+
 # Kittens
 
 ## Get All Kittens
