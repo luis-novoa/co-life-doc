@@ -333,6 +333,10 @@ curl http://127.0.0.1:3000/api/v1/homes
 
 Creates a home ad.
 
+### HTTP Request
+
+`POST http://127.0.0.1:3000/api/v1/homes`
+
 ### Query Parameters
 
 Parameter | Description
@@ -431,6 +435,10 @@ Shows a list of all home ads.
 
 <aside class="success">This action doesn't require an authentication token!</aside>
 
+### HTTP Request
+
+`GET http://127.0.0.1:3000/api/v1/homes`
+
 ## Update
 
 ```shell
@@ -470,6 +478,10 @@ Updates a home ad's information.
 
 <aside class="notice">Users can only update their own ads. Admins can update any ad.</aside>
 
+### HTTP Request
+
+`PUT http://127.0.0.1:3000/api/v1/homes/:id`
+
 ### URL Parameters
 
 Parameter | Description
@@ -489,10 +501,6 @@ room_type | The updated type of the room offered
 more_info | Updated additional information about the room and home
 
 <aside class="success">Inform only the parameters you want to change!</aside>
-
-### HTTP Request
-
-`GET http://127.0.0.1:3000/api/v1/homes`
 
 # Kittens
 
