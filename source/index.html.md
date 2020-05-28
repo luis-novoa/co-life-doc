@@ -175,7 +175,6 @@ email | The account's new email
 ```shell
 curl http://127.0.0.1:3000/users/1
   -X GET
-  -H "Content-Type: application/json"
   -H "X-User-Email: example@testdomain.com"
   -H "X-User-Token: <authentication_token>"
 ```
@@ -215,7 +214,6 @@ ID | The id of the user you want to check
 ```shell
 curl http://127.0.0.1:3000/users
   -X GET
-  -H "Content-Type: application/json"
   -H "X-User-Email: example@testdomain.com"
   -H "X-User-Token: <authentication_token>"
 ```
@@ -259,7 +257,6 @@ Retrieves information from all accounts, except for their authentication tokens.
 ```shell
 curl http://127.0.0.1:3000/users/1
   -X DELETE
-  -H "Content-Type: application/json"
   -H "X-User-Email: example@testdomain.com"
   -H "X-User-Token: <authentication_token>"
 ```
@@ -501,6 +498,40 @@ room_type | The updated type of the room offered
 more_info | Updated additional information about the room and home
 
 <aside class="success">Inform only the parameters you want to change!</aside>
+
+## Destroy
+
+```shell
+curl http://127.0.0.1:3000/api/v1/homes/1
+  -X DELETE 
+  -H "X-User-Email: example@testdomain.com" 
+  -H "X-User-Token: <authentication_token>" 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "Ad deleted!"
+  }
+]
+```
+
+Deletes a home ad.
+
+<aside class="notice">Users can only delete their own ads. Admins can delete any ad.</aside>
+
+### HTTP Request
+
+`DELETE http://127.0.0.1:3000/api/v1/homes/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The id of the ad you want to delete
+
 
 # Kittens
 
