@@ -532,6 +532,45 @@ Parameter | Description
 --------- | -----------
 ID | The id of the ad you want to delete
 
+# Favorites
+
+## Create
+
+```shell
+curl http://127.0.0.1:3000/api/v1/favorites
+  -X POST 
+  -H "Content-Type: application/json" 
+  -H "X-User-Email: example@testdomain.com" 
+  -H "X-User-Token: <authentication_token>" 
+  -d '{
+    "favorite":{
+      "home_id": "2"
+    }
+  }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "user_id": 1,
+    "home_id": 2
+  }
+]
+```
+
+Adds a home add to the user's favorite list.
+
+### HTTP Request
+
+`POST http://127.0.0.1:3000/api/v1/homes`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+home_id | The id of the ad you want to add to your favorite list
 
 # Kittens
 
