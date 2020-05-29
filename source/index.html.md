@@ -39,12 +39,18 @@ Co-Life requires your authentication token and email for every request on privat
 You must replace <code>authentication_token</code> with your personal authentication token.
 </aside>
 
+This app has special features for administrators. In case you want to try them out, use the following credentials on your requests:
+
+`X-User-Email: admin@admin.com`
+
+`X-User-Token: kxdSCt9xFzmxU9HayygE`
+
 # Users
 
 ## Sign Up
 
 ```shell
-curl http://127.0.0.1:3000/users
+curl https://co-life.herokuapp.com/users
   -X POST
   -H "Content-Type: application/json"
   -d '{
@@ -76,10 +82,11 @@ curl http://127.0.0.1:3000/users
 Creates an account.
 
 <aside class="warning">Don't forget to store your authentication token after this operation!</aside>
+<aside class="notice">A user can't become an admin through HTTP requests.</aside>
 
 ### HTTP Request
 
-`POST http://127.0.0.1:3000/users`
+`POST https://co-life.herokuapp.com/users`
 
 ### Query Parameters
 
@@ -93,7 +100,7 @@ password_confirmation | Password confirmation
 ## Update
 
 ```shell
-curl http://127.0.0.1:3000/users/1
+curl https://co-life.herokuapp.com/users/1
   -X PUT
   -H "Content-Type: application/json"
   -H "X-User-Email: example@testdomain.com"
@@ -127,7 +134,7 @@ Updates an account's information.
 
 ### HTTP Request
 
-`POST http://127.0.0.1:3000/users/:id`
+`POST https://co-life.herokuapp.com/users/:id`
 
 ### URL Parameters
 
@@ -147,7 +154,7 @@ email | The account's new email
 ## Show
 
 ```shell
-curl http://127.0.0.1:3000/users/1
+curl https://co-life.herokuapp.com/users/1
   -X GET
   -H "X-User-Email: example@testdomain.com"
   -H "X-User-Token: <authentication_token>"
@@ -175,7 +182,7 @@ Retrieves information from one account.
 
 ### HTTP Request
 
-`GET http://127.0.0.1:3000/users/:id`
+`GET https://co-life.herokuapp.com/users/:id`
 
 ### URL Parameters
 
@@ -186,7 +193,7 @@ ID | The id of the user you want to check
 ## Index
 
 ```shell
-curl http://127.0.0.1:3000/users
+curl https://co-life.herokuapp.com/users
   -X GET
   -H "X-User-Email: example@testdomain.com"
   -H "X-User-Token: <authentication_token>"
@@ -224,12 +231,12 @@ Retrieves information from all accounts, except for their authentication tokens.
 
 ### HTTP Request
 
-`GET http://127.0.0.1:3000/users`
+`GET https://co-life.herokuapp.com/users`
 
 ## Destroy
 
 ```shell
-curl http://127.0.0.1:3000/users/1
+curl https://co-life.herokuapp.com/users/1
   -X DELETE
   -H "X-User-Email: example@testdomain.com"
   -H "X-User-Token: <authentication_token>"
@@ -247,11 +254,11 @@ curl http://127.0.0.1:3000/users/1
 
 Deletes one account.
 
-<aside class="notice">Common users can only delete their own accounts. Admins can delete any common accounts.</aside>
+<aside class="notice">Common users can only delete their own accounts. Admins can delete any common accounts. No admin account can be deleted through HTTP requests.</aside>
 
 ### HTTP Request
 
-`DELETE http://127.0.0.1:3000/users/:id`
+`DELETE https://co-life.herokuapp.com/users/:id`
 
 ### URL Parameters
 
@@ -264,7 +271,7 @@ ID | The id of the user you want to delete
 ## Create
 
 ```shell
-curl http://127.0.0.1:3000/api/v1/homes 
+curl https://co-life.herokuapp.com/api/v1/homes 
   -X POST 
   -H "Content-Type: application/json" 
   -H "X-User-Email: example@testdomain.com" 
@@ -306,7 +313,7 @@ Creates a home ad.
 
 ### HTTP Request
 
-`POST http://127.0.0.1:3000/api/v1/homes`
+`POST https://co-life.herokuapp.com/api/v1/homes`
 
 ### Query Parameters
 
@@ -323,7 +330,7 @@ more_info | Additional information about the room and home
 ## Show
 
 ```shell
-curl http://127.0.0.1:3000/api/v1/homes/1 
+curl https://co-life.herokuapp.com/api/v1/homes/1 
   -X GET 
 ```
 
@@ -353,7 +360,7 @@ Shows information about a home ad.
 
 ### HTTP Request
 
-`GET http://127.0.0.1:3000/api/v1/homes/:id`
+`GET https://co-life.herokuapp.com/api/v1/homes/:id`
 
 ### Query Parameters
 
@@ -364,7 +371,7 @@ ID | The id of the ad you want to check
 ## Index
 
 ```shell
-curl http://127.0.0.1:3000/api/v1/homes 
+curl https://co-life.herokuapp.com/api/v1/homes 
   -X GET 
 ```
 
@@ -408,12 +415,12 @@ Shows a list of all home ads.
 
 ### HTTP Request
 
-`GET http://127.0.0.1:3000/api/v1/homes`
+`GET https://co-life.herokuapp.com/api/v1/homes`
 
 ## Update
 
 ```shell
-curl http://127.0.0.1:3000/api/v1/homes/1
+curl https://co-life.herokuapp.com/api/v1/homes/1
   -X PUT 
   -H "Content-Type: application/json" 
   -H "X-User-Email: example@testdomain.com" 
@@ -451,7 +458,7 @@ Updates a home ad's information.
 
 ### HTTP Request
 
-`PUT http://127.0.0.1:3000/api/v1/homes/:id`
+`PUT https://co-life.herokuapp.com/api/v1/homes/:id`
 
 ### URL Parameters
 
@@ -476,7 +483,7 @@ more_info | Updated additional information about the room and home
 ## Destroy
 
 ```shell
-curl http://127.0.0.1:3000/api/v1/homes/1
+curl https://co-life.herokuapp.com/api/v1/homes/1
   -X DELETE 
   -H "X-User-Email: example@testdomain.com" 
   -H "X-User-Token: <authentication_token>" 
@@ -498,7 +505,7 @@ Deletes a home ad.
 
 ### HTTP Request
 
-`DELETE http://127.0.0.1:3000/api/v1/homes/:id`
+`DELETE https://co-life.herokuapp.com/api/v1/homes/:id`
 
 ### URL Parameters
 
@@ -511,7 +518,7 @@ ID | The id of the ad you want to delete
 ## Create
 
 ```shell
-curl http://127.0.0.1:3000/api/v1/favorites
+curl https://co-life.herokuapp.com/api/v1/favorites
   -X POST 
   -H "Content-Type: application/json" 
   -H "X-User-Email: example@testdomain.com" 
@@ -538,7 +545,7 @@ Adds a home ad to the user's favorite list.
 
 ### HTTP Request
 
-`POST http://127.0.0.1:3000/api/v1/favorites`
+`POST https://co-life.herokuapp.com/api/v1/favorites`
 
 ### Query Parameters
 
@@ -549,7 +556,7 @@ home_id | The id of the ad you want to add to your favorite list
 ## Index
 
 ```shell
-curl http://127.0.0.1:3000/api/v1/favorites
+curl https://co-life.herokuapp.com/api/v1/favorites
   -X GET
   -H "X-User-Email: example@testdomain.com"
   -H "X-User-Token: <authentication_token>"
@@ -577,12 +584,12 @@ Retrieves favorited home ads ids.
 
 ### HTTP Request
 
-`GET http://127.0.0.1:3000/api/v1/favorites`
+`GET https://co-life.herokuapp.com/api/v1/favorites`
 
 ## Destroy
 
 ```shell
-curl http://127.0.0.1:3000/api/v1/favorites/1_20
+curl https://co-life.herokuapp.com/api/v1/favorites/1_20
   -X DELETE 
   -H "X-User-Email: example@testdomain.com" 
   -H "X-User-Token: <authentication_token>" 
@@ -602,7 +609,7 @@ Removes ad from the user's favorite list.
 
 ### HTTP Request
 
-`DELETE http://127.0.0.1:3000/api/v1/favorites/:user_home`
+`DELETE https://co-life.herokuapp.com/api/v1/favorites/:user_home`
 
 ### Query Parameters
 
