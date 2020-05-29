@@ -1,14 +1,10 @@
 ---
-title: API Reference
+title: Co-Life API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -19,50 +15,28 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
-
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Welcome to the Co-Life API! Co-Life is an app focused on offering co-living opportunities. Through this API you can create and manage your account, your ads and your favorite list. In this guide you can check how to use our endpoints with the help of sample code offered on the right section.
 
 # Authentication
 
 > To authorize, use this code:
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
 ```shell
-# With shell, you can just pass the correct header with each request
 curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+  -H "X-User-Email: example@testdomain.com"
+  -H "X-User-Token: <authentication_token>"
 ```
 
-```javascript
-const kittn = require('kittn');
+> Make sure to replace `authentication_token` with your authentication token.
 
-let api = kittn.authorize('meowmeowmeow');
-```
+Co-Life requires your authentication token and email for every request on private end points. They should be included on the header of every request made to the server, in the following format:
 
-> Make sure to replace `meowmeowmeow` with your API key.
+`X-User-Email: example@testdomain.com`
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+`X-User-Token: <authentication_token>`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>authentication_token</code> with your personal authentication token.
 </aside>
 
 # Users
@@ -560,11 +534,11 @@ curl http://127.0.0.1:3000/api/v1/favorites
 ]
 ```
 
-Adds a home add to the user's favorite list.
+Adds a home ad to the user's favorite list.
 
 ### HTTP Request
 
-`POST http://127.0.0.1:3000/api/v1/homes`
+`POST http://127.0.0.1:3000/api/v1/favorites`
 
 ### Query Parameters
 
@@ -572,34 +546,13 @@ Parameter | Description
 --------- | -----------
 home_id | The id of the ad you want to add to your favorite list
 
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+## Index
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+curl http://127.0.0.1:3000/api/v1/favorites
+  -X GET
+  -H "X-User-Email: example@testdomain.com"
+  -H "X-User-Token: <authentication_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -607,140 +560,52 @@ let kittens = api.kittens.get();
 ```json
 [
   {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
+    "user_id": 1,
+    "home_id": 2
   },
+  ...,
   {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+    "user_id": 1,
+    "home_id": 20
   }
 ]
 ```
 
-This endpoint retrieves all kittens.
+Retrieves favorited home ads ids.
+
+<aside class="notice">Users can only retrieve their own favorites. Admins can view everybody's favorites.</aside>
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET http://127.0.0.1:3000/api/v1/favorites`
+
+## Destroy
+
+```shell
+curl http://127.0.0.1:3000/api/v1/favorites/1_20
+  -X DELETE 
+  -H "X-User-Email: example@testdomain.com" 
+  -H "X-User-Token: <authentication_token>" 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "Ad removed from your favorites list!"
+  }
+]
+```
+
+Removes ad from the user's favorite list.
+
+### HTTP Request
+
+`DELETE http://127.0.0.1:3000/api/v1/favorites/:user_home`
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
+user_home | User ID and home ID separated by an underline.
