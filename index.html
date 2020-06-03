@@ -352,6 +352,8 @@ You must replace <code>authentication_token</code> with your personal authentica
 <aside class="notice">A user can't become an admin through HTTP requests.</aside>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://co-life.herokuapp.com/users</code></p>
+
+<p>Successfull HTTP response: <code>201 Created</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -407,6 +409,8 @@ You must replace <code>authentication_token</code> with your personal authentica
 <aside class="warning">Only the owner of the account can change its information.</aside>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://co-life.herokuapp.com/users/:id</code></p>
+
+<p>Successfull HTTP response: <code>200 OK</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -462,6 +466,8 @@ You must replace <code>authentication_token</code> with your personal authentica
 <aside class="notice">Common users can check their own data, while admins can also check data of other users, except for their authentication tokens.</aside>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://co-life.herokuapp.com/users/:id</code></p>
+
+<p>Successfull HTTP response: <code>200 OK</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -528,6 +534,8 @@ You must replace <code>authentication_token</code> with your personal authentica
 <aside class="notice">Common users can only delete their own accounts. Admins can delete any common accounts. No admin account can be deleted through HTTP requests.</aside>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>DELETE https://co-life.herokuapp.com/users/:id</code></p>
+
+<p>Successfull HTTP response: <code>200 OK</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -579,6 +587,8 @@ You must replace <code>authentication_token</code> with your personal authentica
 <p>Creates a home ad.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><code>POST https://co-life.herokuapp.com/api/v1/homes</code></p>
+
+<p>Successfull HTTP response: <code>201 Created</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -642,6 +652,8 @@ You must replace <code>authentication_token</code> with your personal authentica
 <aside class="success">This action doesn't require an authentication token!</aside>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://co-life.herokuapp.com/api/v1/homes/:id</code></p>
+
+<p>Successfull HTTP response: <code>200 OK</code></p>
 <h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -695,6 +707,8 @@ You must replace <code>authentication_token</code> with your personal authentica
 <aside class="success">This action doesn't require an authentication token!</aside>
 <h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://co-life.herokuapp.com/api/v1/homes</code></p>
+
+<p>Successfull HTTP response: <code>200 OK</code></p>
 <h2 id='update-2'>Update</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://co-life.herokuapp.com/api/v1/homes/1
   <span class="nt">-X</span> PUT 
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
@@ -730,6 +744,8 @@ You must replace <code>authentication_token</code> with your personal authentica
 <aside class="notice">Users can only update their own ads. Admins can update any ad.</aside>
 <h3 id='http-request-9'>HTTP Request</h3>
 <p><code>PUT https://co-life.herokuapp.com/api/v1/homes/:id</code></p>
+
+<p>Successfull HTTP response: <code>200 OK</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -799,6 +815,8 @@ You must replace <code>authentication_token</code> with your personal authentica
 <aside class="notice">Users can only delete their own ads. Admins can delete any ad.</aside>
 <h3 id='http-request-10'>HTTP Request</h3>
 <p><code>DELETE https://co-life.herokuapp.com/api/v1/homes/:id</code></p>
+
+<p>Successfull HTTP response: <code>200 OK</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -835,6 +853,8 @@ You must replace <code>authentication_token</code> with your personal authentica
 <p>Adds a home ad to the user&#39;s favorite list.</p>
 <h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://co-life.herokuapp.com/api/v1/favorites</code></p>
+
+<p>Successfull HTTP response: <code>201 Created</code></p>
 <h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -872,6 +892,8 @@ You must replace <code>authentication_token</code> with your personal authentica
 <aside class="notice">Users can only retrieve their own favorites. Admins can view everybody's favorites.</aside>
 <h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://co-life.herokuapp.com/api/v1/favorites</code></p>
+
+<p>Successfull HTTP response: <code>200 OK</code></p>
 <h2 id='destroy-3'>Destroy</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://co-life.herokuapp.com/api/v1/favorites/1_20
   <span class="nt">-X</span> DELETE 
   <span class="nt">-H</span> <span class="s2">"X-User-Email: example@testdomain.com"</span> 
@@ -889,6 +911,8 @@ You must replace <code>authentication_token</code> with your personal authentica
 <p>Removes ad from the user&#39;s favorite list.</p>
 <h3 id='http-request-13'>HTTP Request</h3>
 <p><code>DELETE https://co-life.herokuapp.com/api/v1/favorites/:user_home</code></p>
+
+<p>Successfull HTTP response: <code>200 OK</code></p>
 <h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -923,6 +947,8 @@ You must replace <code>authentication_token</code> with your personal authentica
 <td>Unprocessable entity -- There are issues with the body of your request.</td>
 </tr>
 </tbody></table>
+
+<p>Further explanation about why the error is happening is given in the body of the HTTP response!</p>
 
       </div>
       <div class="dark-box">
