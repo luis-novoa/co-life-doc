@@ -45,6 +45,8 @@ This app has special features for administrators. In case you want to try them o
 
 `X-User-Token: kxdSCt9xFzmxU9HayygE`
 
+<aside class="notice">It is impossible to create or destroy an administrator account through HTTP requests. This actions can only be done via direct access to the database. </aside>
+
 # Users
 
 ## Sign Up
@@ -82,7 +84,6 @@ curl https://co-life.herokuapp.com/users
 Creates an account.
 
 <aside class="warning">Don't forget to store your authentication token after this operation!</aside>
-<aside class="notice">A user can't become an admin through HTTP requests.</aside>
 
 ### HTTP Request
 
