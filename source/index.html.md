@@ -45,7 +45,7 @@ This app has special features for administrators. In case you want to try them o
 
 `X-User-Token: kxdSCt9xFzmxU9HayygE`
 
-<aside class="notice">It is impossible to create or destroy an administrator account through HTTP requests. This actions can only be done via direct access to the database. </aside>
+<aside class="notice">It is impossible to create or destroy an administrator account through HTTP requests. These actions can only be done via direct access to the database. </aside>
 
 # Users
 
