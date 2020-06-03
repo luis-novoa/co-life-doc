@@ -88,6 +88,8 @@ Creates an account.
 
 `POST https://co-life.herokuapp.com/users`
 
+Successfull HTTP response: `201 Created`
+
 ### Query Parameters
 
 Parameter | Description
@@ -136,6 +138,8 @@ Updates an account's information.
 
 `POST https://co-life.herokuapp.com/users/:id`
 
+Successfull HTTP response: `200 OK`
+
 ### URL Parameters
 
 Parameter | Description
@@ -183,6 +187,8 @@ Retrieves information from one account.
 ### HTTP Request
 
 `GET https://co-life.herokuapp.com/users/:id`
+
+Successfull HTTP response: `200 OK`
 
 ### URL Parameters
 
@@ -260,6 +266,8 @@ Deletes one account.
 
 `DELETE https://co-life.herokuapp.com/users/:id`
 
+Successfull HTTP response: `200 OK`
+
 ### URL Parameters
 
 Parameter | Description
@@ -315,6 +323,8 @@ Creates a home ad.
 
 `POST https://co-life.herokuapp.com/api/v1/homes`
 
+Successfull HTTP response: `201 Created`
+
 ### Query Parameters
 
 Parameter | Description
@@ -361,6 +371,8 @@ Shows information about a home ad.
 ### HTTP Request
 
 `GET https://co-life.herokuapp.com/api/v1/homes/:id`
+
+Successfull HTTP response: `200 OK`
 
 ### Query Parameters
 
@@ -417,6 +429,8 @@ Shows a list of all home ads.
 
 `GET https://co-life.herokuapp.com/api/v1/homes`
 
+Successfull HTTP response: `200 OK`
+
 ## Update
 
 ```shell
@@ -459,6 +473,8 @@ Updates a home ad's information.
 ### HTTP Request
 
 `PUT https://co-life.herokuapp.com/api/v1/homes/:id`
+
+Successfull HTTP response: `200 OK`
 
 ### URL Parameters
 
@@ -507,6 +523,8 @@ Deletes a home ad.
 
 `DELETE https://co-life.herokuapp.com/api/v1/homes/:id`
 
+Successfull HTTP response: `200 OK`
+
 ### URL Parameters
 
 Parameter | Description
@@ -547,6 +565,8 @@ Adds a home ad to the user's favorite list.
 
 `POST https://co-life.herokuapp.com/api/v1/favorites`
 
+Successfull HTTP response: `201 Created`
+
 ### Query Parameters
 
 Parameter | Description
@@ -586,6 +606,8 @@ Retrieves favorited home ads ids.
 
 `GET https://co-life.herokuapp.com/api/v1/favorites`
 
+Successfull HTTP response: `200 OK`
+
 ## Destroy
 
 ```shell
@@ -610,6 +632,8 @@ Removes ad from the user's favorite list.
 ### HTTP Request
 
 `DELETE https://co-life.herokuapp.com/api/v1/favorites/:user_home`
+
+Successfull HTTP response: `200 OK`
 
 ### Query Parameters
 
